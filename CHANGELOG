@@ -1,0 +1,54 @@
+##################################################################################
+ShapeMapper 
+Release Notes:
+
+v1.2 -  Fixed bug in pvclient.py causing some 1-nt long helices to vanish in XRNA
+        files.
+
+        Uploaded example data (bacterial ribosome and the TPP riboswitch) to the 
+        Sequence Read Archive, accession SRP052065.
+
+        Changed the EXAMPLE.cfg file to use the example data, and edited for
+        clarity.
+
+        Cleaned up figure rendering. Added a plot comparing mutation rates between
+        the modified and untreated samples for each nucleotide in an RNA, with
+        standard errors shown as shaded regions above and below each line.
+
+        Reverted boxplot normalization handling of no-data points to old behavior
+        (set to 0 and include in percentile calculation). This can affect the
+        scale of SHAPE reactivities for small RNAs.
+
+        Increased default Bowtie2 insert size parameter (maxInsertSize in the
+        ShapeMapper config file) from 250 to 500.
+
+        Added additional FASTA file checks: line-ending conversion,
+                                            lowercase to uppercase conversion,
+                                            and unknown character warning.
+
+        Added matplotlib import and version checks.
+
+        Removed the creation of redundant counted mutation CSV files.
+
+##################################################################################
+Previous versions:
+
+v1.1 -  Fixed bug causing combined FASTA files to contain one mis-named sequence,
+        preventing reads aligning to this sequence from being counted. This bug
+        only affected ShapeMapper runs in which a sample was aligned to multiple
+        reference sequence targets (i.e. a comma-separated list of reference
+        sequence names was specified in the [alignments] section of the config
+        file).
+
+        Fixed bug causing reactivity profile stage to crash for very short
+        reference sequences.
+
+        Changed reactivity profile coloring thresholds to match secondary
+        structures (were 0.45 and 0.8, are now 0.4 and 0.85). This only affects
+        rendered images.
+
+        Added runtime check for the presence of compiled modules.
+
+v1.0 - First public release
+
+##################################################################################
